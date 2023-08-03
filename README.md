@@ -2,7 +2,7 @@
 
 **_A recipe search application in React_**
 
-**Main branch - Commit #2**
+**Main branch - Commit #3**
 
 # Description
 
@@ -10,7 +10,7 @@
 
 # Change done
 
-- Create app.
+- Add basic components.
 
 # Getting Started with Create React App
 
