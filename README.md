@@ -2,7 +2,7 @@
 
 **_A recipe search application in React_**
 
-**Main branch - Commit #3**
+**Main branch - Commit #4**
 
 # Description
 
@@ -10,7 +10,7 @@
 
 # Change done
 
-- Add basic components.
+- Add responsive and menu bar.
 
 # Getting Started with Create React App
 
