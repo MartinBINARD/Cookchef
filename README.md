@@ -2,11 +2,11 @@
 
 **_A recipe search application in React_**
 
-**Main branch - Commit #4**
+**Main branch - Commit #5**
 
 # Description
 
-- A recipe search engine with favorites manager.
+- Add filter search function.
 
 # Change done
 
