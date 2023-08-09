@@ -2,7 +2,7 @@
 
 **_A recipe search application in React_**
 
-**Main branch - Commit #5**
+**Main branch - Commit #6**
 
 # Description
 
@@ -10,7 +10,7 @@
 
 # Change done
 
-- Add responsive and menu bar.
+- Add data API and update recipe function.
 
 # Getting Started with Create React App
 
