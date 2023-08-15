@@ -2,7 +2,7 @@
 
 **_A recipe search application in React_**
 
-**Main branch - Commit #6**
+**Main branch - Commit #7**
 
 # Description
 
@@ -10,7 +10,7 @@
 
 # Change done
 
-- Add data API and update recipe function.
+- Add pagination.
 
 # Getting Started with Create React App
 
