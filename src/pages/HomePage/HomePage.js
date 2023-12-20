@@ -3,6 +3,7 @@ import styles from "./HomePage.module.scss";
 import Recipe from "./components/Recipe/Recipe";
 import Loading from "../../components/Loading/Loading";
 import { ApiContext } from "../../context/ApiContext";
+import Search from "./components/Search/Search";
 
 export default function HomePage() {
   const [recipes, setRecipes] = useState([]);
@@ -39,11 +40,6 @@ export default function HomePage() {
     return () => (cancel = true);
   }, [BASE_URL_API, page]);
 
-  function handleInput(e) {
-    const filter = e.target.value;
-    setFilter(filter.trim().toLowerCase());
-  }
-
   function updateRecipe(updatedRecipe) {
     setRecipes(
       recipes.map((r) => (r._id === updatedRecipe._id ? updatedRecipe : r))
@@ -59,17 +55,7 @@ export default function HomePage() {
       <div
         className={`card flex-fill d-flex flex-column p-20 mb-20 ${styles.contentCard}`}
       >
-        <div
-          className={`d-flex flex-row justify-content-center align-item-center my-30 ${styles.searchBar}`}
-        >
-          <i className="fa-solid fa-magnifying-glass mr-15"></i>
-          <input
-            onInput={handleInput}
-            className="flex-fill"
-            type="text"
-            placeholder="Rechercher"
-          />
-        </div>
+        <Search setFilter={setFilter} />
         {isLoading && !recipes.length ? (
           <Loading />
         ) : (
