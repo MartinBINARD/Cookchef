@@ -1,44 +1,16 @@
-import { useState, useEffect, useContext } from "react";
-import styles from "./HomePage.module.scss";
-import Recipe from "./components/Recipe/Recipe";
-import Loading from "../../components/Loading/Loading";
-import { ApiContext } from "../../context/ApiContext";
-import Search from "./components/Search/Search";
+import { useState, useContext } from 'react';
+import styles from './HomePage.module.scss';
+import Recipe from './components/Recipe/Recipe';
+import Loading from '../../components/Loading/Loading';
+import Search from './components/Search/Search';
+import { ApiContext } from '../../context/ApiContext';
+import { useFetchData } from '../../hooks';
 
 export default function HomePage() {
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState('');
   const [page, setPage] = useState(1);
   const BASE_URL_API = useContext(ApiContext);
-
-  useEffect(() => {
-    let cancel = false;
-    async function fetchRecipes() {
-      try {
-        setIsLoading(true);
-        const response = await fetch(
-          `${BASE_URL_API}?skip=${(page - 1) * 18}&limit=18`
-        );
-        if (response.ok && !cancel) {
-          const newRecipes = await response.json();
-          setRecipes((x) =>
-            Array.isArray(newRecipes)
-              ? [...x, ...newRecipes]
-              : [...x, newRecipes]
-          );
-        }
-      } catch (e) {
-        console.log("ERREUR");
-      } finally {
-        if (!cancel) {
-          setIsLoading(false);
-        }
-      }
-    }
-    fetchRecipes();
-    return () => (cancel = true);
-  }, [BASE_URL_API, page]);
+  const [[recipes, setRecipes], isLoading] = useFetchData(BASE_URL_API, page);
 
   function updateRecipe(updatedRecipe) {
     setRecipes(
@@ -49,7 +21,7 @@ export default function HomePage() {
   return (
     <div className="flex-fill container d-flex flex-column p-20">
       <h1 className="my-30">
-        Découvrez nos nouvelles recettes{" "}
+        Découvrez nos nouvelles recettes{' '}
         <small className={styles.small}>- {recipes.length}</small>
       </h1>
       <div
