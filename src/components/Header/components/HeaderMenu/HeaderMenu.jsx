@@ -1,10 +1,13 @@
 import styles from "./HeaderMenu.module.scss";
 
-export default function HeaderMenu() {
+function HeaderMenu({ setPage }) {
   return (
     <ul className={`${styles.MenuContainer} card p-20`}>
-      <li>Whislit</li>
+      <li onClick={() => setPage("admin")}>Ajouter une recette</li>
+      <li>Wishlist</li>
       <li>Connexion</li>
     </ul>
   );
 }
+
+export default HeaderMenu;

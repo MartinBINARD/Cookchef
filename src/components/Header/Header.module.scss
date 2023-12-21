@@ -2,13 +2,14 @@
 
 .header {
   position: relative;
-  height: 58px;
   padding: 10px 20px;
+  height: 58px;
   background-color: white;
   box-shadow: var(--box-shadow-nav);
   color: var(--primary);
   img {
     width: 130px;
+    cursor: pointer;
   }
 }
 
