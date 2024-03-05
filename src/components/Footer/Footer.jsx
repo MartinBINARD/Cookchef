@@ -1,11 +1,13 @@
-import styles from "./Footer.module.scss";
+import styles from './Footer.module.scss';
 
-export default function Footer() {
+function Footer() {
   return (
     <footer
       className={`${styles.footer} d-flex flex-row align-items-center justify-content-center p-20`}
     >
-      <p>Copyright © 2023 Cookchef</p>
+      <p>Copyright © 2024 Cookchef Dyma, Inc.</p>
     </footer>
   );
 }
+
+export default Footer;

@@ -1,4 +1,4 @@
-import style from "./Loading.module.scss";
+import style from './Loading.module.scss';
 
 function Loading() {
   return (
@@ -9,3 +9,4 @@ function Loading() {
 }
 
 export default Loading;
+ 
