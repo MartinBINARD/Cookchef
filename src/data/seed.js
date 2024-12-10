@@ -1,9 +1,9 @@
 import { data } from "./recipes";
 
 export async function seedRecipes() {
-  const recipes = await fetch("https://restapi.fr/api/recipes");
+  const recipes = await (await fetch("https://restapi.fr/api/recipes")).json();
 
-  if (recipes.length < 10) {
+  if (recipes.length < 20) {
     await fetch("https://restapi.fr/api/recipes", {
       method: "POST",
       headers: {

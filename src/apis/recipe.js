@@ -1,14 +1,14 @@
-const RECIPE_API = "https://restapi.fr/api/recipes";
+const RECIPE_API = 'https://restapi.fr/api/recipes';
 
 export async function getRecipes(queryParam) {
   const response = await fetch(
-    `${RECIPE_API}${queryParam ? `?${queryParam}` : ""}`
+    `${RECIPE_API}${queryParam ? `?${queryParam}` : ''}`
   );
   if (response.ok) {
     const body = await response.json();
     return Array.isArray(body) ? body : [body];
   } else {
-    throw new Error("Error fetch recipes");
+    throw new Error('Error fetch recipes');
   }
 }
 
@@ -17,48 +17,48 @@ export async function getRecipe(_id) {
   if (response.ok) {
     return response.json();
   } else {
-    throw new Error("Error fetch one recipe");
+    throw new Error('Error fetch one recipe');
   }
 }
 
 export async function deleteRecipe(_id) {
   const response = await fetch(`${RECIPE_API}/${_id}`, {
-    method: "DELETE",
+    method: 'DELETE',
   });
   if (response.ok) {
     return _id;
   } else {
-    throw new Error("Error delete recipe");
+    throw new Error('Error delete recipe');
   }
 }
 
 export async function updateRecipe(updatedRecipe) {
   const { _id, ...restRecipe } = updatedRecipe;
   const response = await fetch(`${RECIPE_API}/${_id}`, {
-    method: "PATCH",
+    method: 'PATCH',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(restRecipe),
   });
   if (response.ok) {
     return response.json();
   } else {
-    throw new Error("Error update recipe");
+    throw new Error('Error update recipe');
   }
 }
 
 export async function createRecipe(newRecipe) {
   const response = await fetch(RECIPE_API, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(newRecipe),
   });
   if (response.ok) {
     return response.json();
   } else {
-    throw new Error("Error create recipe");
+    throw new Error('Error create recipe');
   }
 }

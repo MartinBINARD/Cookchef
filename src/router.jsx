@@ -1,31 +1,33 @@
-import { lazy } from "react";
-import { createBrowserRouter, redirect } from "react-router-dom";
-import { getRecipe } from "./apis";
-import App from "./App";
+/* eslint-disable react-refresh/only-export-components */
 
-const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
-const Admin = lazy(() => import("./pages/Admin/Admin"));
+import { lazy } from 'react';
+import { createBrowserRouter, redirect } from 'react-router-dom';
+import { getRecipe } from './apis';
+import App from './App';
+
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const Admin = lazy(() => import('./pages/Admin/Admin'));
 const AdminRecipes = lazy(() =>
-  import("./pages/Admin/pages/AdminRecipes/AdminRecipes")
+  import('./pages/Admin/pages/AdminRecipes/AdminRecipes')
 );
 const AdminUsers = lazy(() =>
-  import("./pages/Admin/pages/AdminUsers/AdminUsers")
+  import('./pages/Admin/pages/AdminUsers/AdminUsers')
 );
 
 const AdminRecipesList = lazy(() =>
   import(
-    "./pages/Admin/pages/AdminRecipes/pages/AdminRecipesList/AdminRecipesList"
+    './pages/Admin/pages/AdminRecipes/pages/AdminRecipesList/AdminRecipesList'
   )
 );
 const AdminRecipesForm = lazy(() =>
   import(
-    "./pages/Admin/pages/AdminRecipes/pages/AdminRecipesForm/AdminRecipesForm"
+    './pages/Admin/pages/AdminRecipes/pages/AdminRecipesForm/AdminRecipesForm'
   )
 );
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
@@ -33,42 +35,43 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "admin",
+        path: 'admin',
         element: <Admin />,
         children: [
           {
-            path: "recipes",
+            path: 'recipes',
             element: <AdminRecipes />,
             children: [
               {
-                path: "list",
+                path: 'list',
                 element: <AdminRecipesList />,
               },
               {
-                path: "new",
+                path: 'new',
                 element: <AdminRecipesForm />,
               },
               {
-                path: "edit/:recipeId",
+                path: 'edit/:recipeId',
                 element: <AdminRecipesForm />,
                 loader: async ({ params: { recipeId } }) => getRecipe(recipeId),
               },
               {
                 index: true,
-                loader: async () => redirect("/admin/recipes/list"),
+                loader: async () => redirect('/admin/recipes/list'),
               },
             ],
           },
           {
-            path: "users",
+            path: 'users',
             element: <AdminUsers />,
           },
           {
             index: true,
-            loader: async () => redirect("/admin/recipes"),
+            loader: async () => redirect('/admin/recipes'),
           },
         ],
       },
     ],
   },
 ]);
+ 

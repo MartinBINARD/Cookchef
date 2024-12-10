@@ -1,7 +1,7 @@
-import { useFetchRecipes } from "../../../../../../hooks";
-import styles from "./AdminRecipesList.module.scss";
-import { deleteRecipe as deleteR } from "../../../../../../apis";
-import { NavLink } from "react-router-dom";
+import { useFetchRecipes } from '../../../../../../hooks';
+import styles from './AdminRecipesList.module.scss';
+import { deleteRecipe as deleteR } from '../../../../../../apis';
+import { NavLink } from 'react-router-dom';
 
 function AdminRecipesList() {
   const [[recipes, setRecipes]] = useFetchRecipes();
