@@ -1,4 +1,5 @@
 import { selectorFamily } from 'recoil';
+import { getRecipe } from '../apis';
 import { recipesState } from './atoms';
 
 export const selectFilteredRecipes = selectorFamily({
@@ -12,4 +13,9 @@ export const selectFilteredRecipes = selectorFamily({
         recipes.filter((r) => r.title.toLowerCase().startsWith(filter))
       );
     },
+});
+
+export const selectActiveRecipe = selectorFamily({
+  key: 'selectActiveRecipe',
+  get: (recipeId) => async () => recipeId && (await getRecipe(recipeId)),
 });

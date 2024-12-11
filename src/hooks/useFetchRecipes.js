@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { recipesState } from '../state';
 import { getRecipes } from '../apis';
+import { recipesState } from '../state';
 
 export function useFetchRecipes(page) {
   const setRecipes = useSetRecoilState(recipesState);
@@ -21,7 +21,11 @@ export function useFetchRecipes(page) {
         }
         const fetchedRecipes = await getRecipes(queryParam);
         if (!cancel) {
-          setRecipes((x) => [...x, ...fetchedRecipes]);
+          if (page && page !== 1) {
+            setRecipes((x) => [...x, ...fetchedRecipes]);
+          } else {
+            setRecipes(fetchedRecipes);
+          }
         }
       } catch (e) {
         setError('Erreur');
