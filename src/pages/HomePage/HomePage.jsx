@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { deleteRecipe as deleteR, updateRecipe as updateR } from '../../apis';
-import Loading from '../../components/Loading/Loading';
-import { useFetchRecipes } from '../../hooks';
+import { deleteRecipe as deleteR, updateRecipe as updateR } from 'src/apis';
+import { useFetchRecipes } from 'src/hooks';
 import {
   recipesState,
   selectFilteredRecipes,
   wishlistDisplayState,
-} from '../../state';
+} from 'src/state';
+import Loading from '../../components/Loading/Loading';
 import styles from './HomePage.module.scss';
 import Recipe from './components/Recipe/Recipe';
 import Search from './components/Search/Search';
@@ -36,7 +36,7 @@ export default function HomePage() {
   return (
     <>
       <div className="flex-fill container d-flex flex-column p-20">
-        <h1 className="my-30">
+        <h1 className={`my-30 ${styles.title}`}>
           Découvrez nos nouvelles recettes{' '}
           <small className={styles.small}>- {recipes.length}</small>
         </h1>
@@ -48,7 +48,7 @@ export default function HomePage() {
             <Loading />
           ) : (
             <div className={styles.grid}>
-              {recipes
+              {recipes &&  recipes
                 .filter((r) => r.title.toLowerCase().startsWith(filter))
                 .map((r) => (
                   <Recipe
