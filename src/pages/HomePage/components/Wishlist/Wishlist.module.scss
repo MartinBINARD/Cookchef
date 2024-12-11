@@ -20,4 +20,29 @@
   padding: 20px;
   box-shadow: var(--box-shadow);
   border: var(--border);
+  overflow-y: auto;
+  animation: appear 200ms;
+}
+
+.remove {
+  animation: disappear 200ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes disappear {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
+  }
 }
