@@ -1,14 +1,18 @@
+import { NavLink, useLocation } from 'react-router-dom';
 import styles from './HeaderMenu.module.scss';
-import { NavLink } from 'react-router-dom';
 
-function HeaderMenu() {
+function HeaderMenu({ displayWishlist, hideMenu }) {
+  const location = useLocation();
+
   return (
-    <ul className={`${styles.MenuContainer} card p-20`}>
+    <ul onClick={hideMenu} className={`${styles.MenuContainer} card p-20`}>
       <li>
         <NavLink to="/admin">Admin</NavLink>
       </li>
-      <li>Wishlist</li>
-      <li>Connexion</li>
+      {!location.pathname.includes('admin') && (
+        <li onClick={displayWishlist}>Wishlist</li>
+      )}
+      {/* <li>Connexion</li> */}
     </ul>
   );
 }
